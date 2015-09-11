@@ -1,4 +1,4 @@
-# Writing a plugin
+# 플러그인 작성하기
 
 If you plan to create your own Gulp plugin, you will save time by reading the full documentation.
 

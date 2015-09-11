@@ -1,6 +1,6 @@
-## gulp API docs
+## API 참조 문서
 
-Jump to:
+바로 가기:
   [gulp.src](#gulpsrcglobs-options) |
   [gulp.dest](#gulpdestpath-options) |
   [gulp.task](#gulptaskname-deps-fn) |
@@ -8,10 +8,9 @@ Jump to:
 
 ### gulp.src(globs[, options])
 
-Emits files matching provided glob or an array of globs. 
-Returns a [stream](http://nodejs.org/api/stream.html) of [Vinyl files](https://github.com/wearefractal/vinyl-fs) 
-that can be [piped](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options) 
-to plugins.
+지정한 glob 또는 glob 배열을 통해 파일을 표현합니다.
+[Vinyl 파일](https://github.com/wearefractal/vinyl-fs)의 [stream](http://nodejs.org/api/stream.html)을 반환하며
+[파이프](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options)를 통해 플러그인을 사용할 수 있습니다.
 
 ```javascript
 gulp.src('client/templates/*.jade')
@@ -20,35 +19,35 @@ gulp.src('client/templates/*.jade')
   .pipe(gulp.dest('build/minified_templates'));
 ```
 
-`glob` refers to [node-glob syntax](https://github.com/isaacs/node-glob) or it can be a direct file path.
+`glob`는 [node-glob 문법](https://github.com/isaacs/node-glob)을 참조하거나 파일 경로를 직접 사용할 수 있습니다.
 
 #### globs
-Type: `String` or `Array`
+타입: `String` or `Array`
 
-Glob or array of globs to read.
+읽어들일 glob 또는 glob 배열입니다.
 
 #### options
-Type: `Object`
+타입: `Object`
 
-Options to pass to [node-glob] through [glob-stream].
+[glob-stream]을 통해 [node-glob]에 전달할 옵션입니다.
 
-gulp adds some additional options in addition to the [options supported by node-glob][node-glob documentation] and [glob-stream]:
+gulp는 [node-glob][node-glob documentation]와 [glob-stream]에서 지원하는 옵션 외에도 추가 옵션을 제공합니다:
 
 #### options.buffer
-Type: `Boolean`
-Default: `true`
+타입: `Boolean`
+기본값: `true`
 
 Setting this to `false` will return `file.contents` as a stream and not buffer files. This is useful when working with large files. **Note:** Plugins might not implement support for streams.
 
 #### options.read
-Type: `Boolean`
-Default: `true`
+타입: `Boolean`
+기본값: `true`
 
 Setting this to `false` will return `file.contents` as null and not read the file at all.
 
 #### options.base
-Type: `String`
-Default: everything before a glob starts (see [glob2base])
+타입: `String`
+기본값: everything before a glob starts (see [glob2base])
 
 E.g., consider `somefile.js` in `client/js/somedir`:
 
@@ -79,22 +78,22 @@ destination directory. In turn, relative paths are calculated against the file b
 See `gulp.src` above for more info.
 
 #### path
-Type: `String` or `Function`
+타입: `String` or `Function`
 
 The path (output folder) to write files to. Or a function that returns it, the function will be provided a [vinyl File instance](https://github.com/wearefractal/vinyl).
 
 #### options
-Type: `Object`
+타입: `Object`
 
 #### options.cwd
-Type: `String`
-Default: `process.cwd()`
+타입: `String`
+기본값: `process.cwd()`
 
 `cwd` for the output folder, only has an effect if provided output folder is relative.
 
 #### options.mode
-Type: `String`
-Default: `0777`
+타입: `String`
+기본값: `0777`
 
 Octal permission string specifying mode for any folders that need to be created for output folder.
 
@@ -113,7 +112,7 @@ gulp.task('somename', function() {
 The name of the task. Tasks that you want to run from the command line should not have spaces in them.
 
 #### deps
-Type: `Array`
+타입: `Array`
 
 An array of tasks to be executed and completed before your task will run.
 
@@ -214,17 +213,17 @@ Watch files and do something when a file changes. This always returns an EventEm
 ### gulp.watch(glob[, opts], tasks)
 
 #### glob
-Type: `String` or `Array`
+타입: `String` or `Array`
 
 A single glob or array of globs that indicate which files to watch for changes.
 
 #### opts
-Type: `Object`
+타입: `Object`
 
 Options, that are passed to [`gaze`](https://github.com/shama/gaze).
 
 #### tasks
-Type: `Array`
+타입: `Array`
 
 Names of task(s) to run when a file changes, added with `gulp.task()`
 
@@ -238,17 +237,17 @@ watcher.on('change', function(event) {
 ### gulp.watch(glob[, opts, cb])
 
 #### glob
-Type: `String` or `Array`
+타입: `String` or `Array`
 
 A single glob or array of globs that indicate which files to watch for changes.
 
 #### opts
-Type: `Object`
+타입: `Object`
 
 Options, that are passed to [`gaze`](https://github.com/shama/gaze).
 
 #### cb(event)
-Type: `Function`
+타입: `Function`
 
 Callback to be called on each change.
 
@@ -261,12 +260,12 @@ gulp.watch('js/**/*.js', function(event) {
 The callback will be passed an object, `event`, that describes the change:
 
 ##### event.type
-Type: `String`
+타입: `String`
 
 The type of change that occurred, either `added`, `changed` or `deleted`.
 
 ##### event.path
-Type: `String`
+타입: `String`
 
 The path to the file that triggered the event.
 

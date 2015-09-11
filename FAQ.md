@@ -1,4 +1,4 @@
-# FAQ
+# 자주 묻는 질문
 
 ## Why gulp? Why not ____?
 

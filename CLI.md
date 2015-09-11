@@ -1,29 +1,31 @@
-## gulp CLI docs
+## CLI 사용법
 
-### Flags
+### 플래그
 
-gulp has very few flags to know about. All other flags are for tasks to use if needed.
+gulp는 아주 적은 플래그를 가지고 있습니다. 작업에 필요하다면 다음 플래그를 사용할 수 있습니다.
 
-- `-v` or `--version` will display the global and local gulp versions
-- `--require <module path>` will require a module before running the gulpfile. This is useful for transpilers but also has other applications. You can use multiple `--require` flags
-- `--gulpfile <gulpfile path>` will manually set path of gulpfile. Useful if you have multiple gulpfiles. This will set the CWD to the gulpfile directory as well
-- `--cwd <dir path>` will manually set the CWD. The search for the gulpfile, as well as the relativity of all requires will be from here
-- `-T` or `--tasks` will display the task dependency tree for the loaded gulpfile
-- `--tasks-simple` will display a plaintext list of tasks for the loaded gulpfile
-- `--color` will force gulp and gulp plugins to display colors even when no color support is detected
-- `--no-color` will force gulp and gulp plugins to not display colors even when color support is detected
-- `--silent` will disable all gulp logging
+- `-v` or `--version` 전역, 지역 gulp의 버전을 표시합니다.
+- `--require <module path>` gulpfile을 실행하기 전에 포함할 모듈을 지정합니다. 이 플래그는 빌드전에 transpile 언어를 컴파일 할 때 사용할 수 있습니다. 또한 다중으로 `--require` 플래그를 사용할 수 있습니다.
+- `--gulpfile <gulpfile path>` 실행할 gulpfile을 직접 지정합니다. gulpfile이 여러 개일 때 유용한 플래그입니다. 그뿐만 아니라 gulpfile 디렉터리를 CWD로 설정합니다.
+- `--cwd <dir path>` CWD를 직접 지정합니다. gulpfile과 포함된 모든 모듈들은 이 디렉터리에서 찾습니다.
+- `-T` or `--tasks` 로드된 gulpfile의 작업 리스트를 의존성 트리 형태로 표시합니다.
+- `--tasks-simple` 로드된 gulpfile의 작업 리스트를 간단한 텍스트로 표시합니다.
+- `--color` gulp와 gulp 플러그인의 색상 로깅을 지원하지 않을 때도 활성화합니다.
+- `--no-color` gulp와 gulp 플러그인의 색상 로깅을 모두 비활성화합니다.
+- `--silent` 모든 gulp 로그를 비활성화합니다.
 
-The CLI adds process.env.INIT_CWD which is the original cwd it was launched from.
+CLI는 자동으로 `process.env.INIT_CWD`에 실제 gulp가 실행된 cwd 위치를 지정합니다.
 
-#### Task specific flags
+#### 작업 특정 플래그
 
-Refer to this [StackOverflow](http://stackoverflow.com/questions/23023650/is-it-possible-to-pass-a-flag-to-gulp-to-have-it-run-tasks-in-different-ways) link for how to add task specific flags
+작업에서 커스텀 플래그를 사용하려면 이 [StackOverflow 질문](http://stackoverflow.com/questions/23023650/is-it-possible-to-pass-a-flag-to-gulp-to-have-it-run-tasks-in-different-ways)을 참고하세요.
 
-### Tasks
+### 작업
 
-Tasks can be executed by running `gulp <task> <othertask>`. Just running `gulp` will execute the task you registered called `default`. If there is no `default` task gulp will error.
+작업은 `gulp <작업> <또 다른 작업>` 형식으로 실행할 수 있습니다. 그냥 `gulp`만 실행하면 등록해둔 `default` 작업이 실행됩니다.
+만약 `default` 작업이 없으면 gulp 오류가 발생합니다.
 
-### Compilers
+### 컴파일러
 
-You can find a list of supported languages at [interpret](https://github.com/tkellen/node-interpret#jsvariants). If you would like to add support for a new language send pull request/open issues there.
+[Interpret](https://github.com/tkellen/node-interpret#jsvariants)에서 지원하는 언어 목록을 찾을 수 있습니다.
+새로운 언어를 추가하고 싶다면 PR을 넣거나 이슈를 생성하세요.
