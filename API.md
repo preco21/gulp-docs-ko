@@ -37,19 +37,20 @@ gulp는 [node-glob][node-glob documentation]와 [glob-stream]에서 지원하는 옵션 외
 타입: `Boolean`
 기본값: `true`
 
-Setting this to `false` will return `file.contents` as a stream and not buffer files. This is useful when working with large files. **Note:** Plugins might not implement support for streams.
+`false`로 지정하면 `file.contents`를 버퍼 파일 대신 스트림 형식으로 반환합니다. 아주 큰 파일을 다룰 때 유용하게 사용할 수 있습니다.
+**참고:** 플러그인은 스트림에 대한 지원을 구현하지 않을 수 있습니다.
 
 #### options.read
 타입: `Boolean`
 기본값: `true`
 
-Setting this to `false` will return `file.contents` as null and not read the file at all.
+`false`로 지정하면 `file.contents`가 null이 되며 모든 파일을 읽지 않습니다.
 
 #### options.base
 타입: `String`
-기본값: everything before a glob starts (see [glob2base])
+기본값: 모든 glob가 시작되는 위치 ([glob2base]를 참고하세요)
 
-E.g., consider `somefile.js` in `client/js/somedir`:
+예제: `somefile.js`가 `client/js/somedir`안에 있을 때:
 
 ```js
 gulp.src('client/js/**/*.js') // Matches 'client/js/somedir/somefile.js' and resolves `base` to `client/js/`
@@ -63,7 +64,8 @@ gulp.src('client/js/**/*.js', { base: 'client' })
 
 ### gulp.dest(path[, options])
 
-Can be piped to and it will write files. Re-emits all data passed to it so you can pipe to multiple folders.  Folders that don't exist will be created.
+파이프된 스트림을 파일로 변환합니다.
+이 작업이 수행된 이후에도 계속해서 스트림을 반환하므로 여러 폴더에 대해 작업을 할 수도 있습니다. 지정한 폴더가 없으면 새로 생성합니다.
 
 ```javascript
 gulp.src('./client/templates/*.jade')
@@ -206,26 +208,26 @@ gulp.task('default', ['one', 'two']);
 ```
 
 
-### gulp.watch(glob [, opts], tasks) or gulp.watch(glob [, opts, cb])
+### gulp.watch(glob [, opts], tasks) 또는 gulp.watch(glob [, opts, cb])
 
-Watch files and do something when a file changes. This always returns an EventEmitter that emits `change` events.
+파일의 변경을 감시합니다. 언제나 `change` 이벤트를 발생시키는 EventEmitter를 반환합니다.
 
 ### gulp.watch(glob[, opts], tasks)
 
 #### glob
 타입: `String` or `Array`
 
-A single glob or array of globs that indicate which files to watch for changes.
+변경을 감시할 타겟 파일입니다. 단일 glob 또는 배열을 지정할 수 있습니다.
 
 #### opts
 타입: `Object`
 
-Options, that are passed to [`gaze`](https://github.com/shama/gaze).
+[`gaze`](https://github.com/shama/gaze)로 넘겨지는 옵션입니다.
 
 #### tasks
 타입: `Array`
 
-Names of task(s) to run when a file changes, added with `gulp.task()`
+파일의 변경 이벤트가 발생할 때마다 호출할 task입니다. 여러 개 지정할 수 있습니다.
 
 ```js
 var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
@@ -239,17 +241,17 @@ watcher.on('change', function(event) {
 #### glob
 타입: `String` or `Array`
 
-A single glob or array of globs that indicate which files to watch for changes.
+변경을 감시할 타겟 파일입니다. 단일 glob 또는 배열을 지정할 수 있습니다.
 
 #### opts
 타입: `Object`
 
-Options, that are passed to [`gaze`](https://github.com/shama/gaze).
+[`gaze`](https://github.com/shama/gaze)로 넘겨지는 옵션입니다.
 
 #### cb(event)
 타입: `Function`
 
-Callback to be called on each change.
+콜백은 변경 이벤트마다 호출됩니다.
 
 ```js
 gulp.watch('js/**/*.js', function(event) {
@@ -257,17 +259,17 @@ gulp.watch('js/**/*.js', function(event) {
 });
 ```
 
-The callback will be passed an object, `event`, that describes the change:
+콜백은 변경 내용을 포함하는 `event` 객체를 반환합니다:
 
 ##### event.type
 타입: `String`
 
-The type of change that occurred, either `added`, `changed` or `deleted`.
+발생한 이벤트의 타입입니다. `added`, `changed`, `deleted` 중 한 가지가 지정됩니다.
 
 ##### event.path
 타입: `String`
 
-The path to the file that triggered the event.
+이벤트가 발생한 파일의 경로입니다.
 
 
 [node-glob documentation]: https://github.com/isaacs/node-glob#options
