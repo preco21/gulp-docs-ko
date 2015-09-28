@@ -1,6 +1,6 @@
 # gulp 한국어 참조 문서
 
-* [시작하기](getting-started.md) - `gulp`를 가지고 무엇을 할 수 있을까요? / gulp 시작하기!
+* [시작하기](getting-started.md) - `gulp`를 가지고 무엇을 할 수 있나요? / gulp 시작하기
 * [API 참조 문서](API.md) - `gulp` API에 대해 자세히 알아보기
 * [CLI 사용법](CLI.md) - 작업을 사용하는 방법과 컴파일러를 호출하는 방법 알아보기
 * [플러그인 작성하기](writing-a-plugin/README.md) - `gulp` 플러그인을 작성하고 있나요? 이 문서를 꼭 한번 읽어보세요!
@@ -20,7 +20,7 @@
 ## 여전히 궁금한 것이 있나요?
 
 [StackOverflow의 #gulp 태그](http://stackoverflow.com/questions/tagged/gulp)에 포스트를 작성하거나
-[Freenode](http://freenode.net/)의 [#gulpjs](http://webchat.freenode.net/?channels=gulpjs) 채팅 채널에 들어오셔서 대화를 나누세요.
+[Freenode](http://freenode.net/)의 [#gulpjs](http://webchat.freenode.net/?channels=gulpjs) 채팅 채널에서 대화를 나누세요.
 
 
 ## 책
