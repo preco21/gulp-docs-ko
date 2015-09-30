@@ -1,6 +1,6 @@
 # gulp 한국어 참조 문서
 
-* [시작하기](getting-started.md) - `gulp`를 가지고 무엇을 할 수 있나요? / gulp 시작하기
+* [gulp 시작하기](getting-started.md) - `gulp`는 무엇을 하나요?
 * [API 참조 문서](API.md) - `gulp` API에 대해 자세히 알아보기
 * [CLI 사용법](CLI.md) - 작업을 사용하는 방법과 컴파일러를 호출하는 방법 알아보기
 * [플러그인 작성하기](writing-a-plugin/README.md) - `gulp` 플러그인을 작성하고 있나요? 이 문서를 꼭 한번 읽어보세요!

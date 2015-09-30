@@ -10,7 +10,7 @@
 
 지정한 glob 또는 glob 배열을 통해 파일을 표현합니다.
 [Vinyl 파일](https://github.com/wearefractal/vinyl-fs)의 [stream](http://nodejs.org/api/stream.html)을 반환하며
-[파이프](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options)를 통해 플러그인을 사용할 수 있습니다.
+[파이프 메서드](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options)를 통해 플러그인을 사용할 수 있습니다.
 
 ```javascript
 gulp.src('client/templates/*.jade')
