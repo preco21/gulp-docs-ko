@@ -22,7 +22,7 @@ gulp.src('client/templates/*.jade')
 `glob`는 [node-glob 문법](https://github.com/isaacs/node-glob)을 참조하거나 파일 경로를 직접 사용할 수 있습니다.
 
 #### globs
-타입: `String` or `Array`
+타입: `String` 또는 `Array`
 
 읽어들일 glob 또는 glob 배열입니다.
 
@@ -37,8 +37,10 @@ gulp는 [node-glob][node-glob documentation]와 [glob-stream]에서 지원하는 옵션 외
 타입: `Boolean`
 기본값: `true`
 
-`false`로 지정하면 `file.contents`를 버퍼 파일 대신 스트림 형식으로 반환합니다. 아주 큰 파일을 다룰 때 유용하게 사용할 수 있습니다.
-**참고:** 플러그인은 스트림에 대한 지원을 구현하지 않을 수 있습니다.
+`false`로 지정하면 `file.contents`를 버퍼 파일 대신 스트림 형식으로 반환합니다.
+아주 큰 파일을 다룰 때 유용하게 사용할 수 있습니다.
+
+**참고:** 플러그인은 스트림에 대한 구현을 지원하지 않을 수 있습니다.
 
 #### options.read
 타입: `Boolean`
@@ -65,7 +67,8 @@ gulp.src('client/js/**/*.js', { base: 'client' })
 ### gulp.dest(path[, options])
 
 파이프된 스트림을 파일로 변환합니다.
-이 작업이 수행된 이후에도 계속해서 스트림을 반환하므로 여러 폴더에 대해 작업을 할 수도 있습니다. 지정한 폴더가 없으면 새로 생성합니다.
+이 작업이 수행된 이후에도 계속해서 스트림을 반환하므로 여러 폴더에 대해 작업을 할 수도 있습니다.
+지정한 폴더가 없으면 새로 생성합니다.
 
 ```javascript
 gulp.src('./client/templates/*.jade')
@@ -75,14 +78,14 @@ gulp.src('./client/templates/*.jade')
   .pipe(gulp.dest('./build/minified_templates'));
 ```
 
-The write path is calculated by appending the file relative path to the given
-destination directory. In turn, relative paths are calculated against the file base. 
-See `gulp.src` above for more info.
+파일의 저장 경로는 지정한 목적지 경로에 파일 상대 경로를 추가하여 연산됩니다.
+차례로 파일의 상대 경로는 파일 base를 기반으로 연산됩니다.
+자세한 내용은 위의 `gulp.src`를 참고하세요.
 
 #### path
-타입: `String` or `Function`
+타입: `String` 또는 `Function`
 
-The path (output folder) to write files to. Or a function that returns it, the function will be provided a [vinyl File instance](https://github.com/wearefractal/vinyl).
+`path`(출력 폴더)는 파일을 쓸 경로를 지정합니다. 또는 함수를 지정하면 함수에선 [vinyl File instance](https://github.com/wearefractal/vinyl)를 제공합니다.
 
 #### options
 타입: `Object`
@@ -91,17 +94,17 @@ The path (output folder) to write files to. Or a function that returns it, the f
 타입: `String`
 기본값: `process.cwd()`
 
-`cwd` for the output folder, only has an effect if provided output folder is relative.
+결과물을 출력할 `cwd` 폴더를 지정합니다. 출력 폴더가 상대 경로일 경우에만 작동합니다.
 
 #### options.mode
 타입: `String`
 기본값: `0777`
 
-Octal permission string specifying mode for any folders that need to be created for output folder.
+출력 폴더를 생성하기 위해 필요한 폴더의 모드를 8진수 권한 문자열로 설정합니다.
 
 ### gulp.task(name[, deps], fn)
 
-Define a task using [Orchestrator].
+[Orchestrator]를 사용하여 작업을 정의합니다.
 
 ```js
 gulp.task('somename', function() {
@@ -111,12 +114,12 @@ gulp.task('somename', function() {
 
 #### name
 
-The name of the task. Tasks that you want to run from the command line should not have spaces in them.
+작업의 이름입니다. 여기서 지정한 이름으로 CLI 터미널에서 작업을 실행할 수 있으며 공백이 들어가선 안됩니다.
 
 #### deps
 타입: `Array`
 
-An array of tasks to be executed and completed before your task will run.
+현재 작업이 실행되기 이전에 먼저 실행할 종속성 작업의 배열입니다.
 
 ```js
 gulp.task('mytask', ['array', 'of', 'task', 'names'], function() {
@@ -124,17 +127,17 @@ gulp.task('mytask', ['array', 'of', 'task', 'names'], function() {
 });
 ```
 
-**Note:** Are your tasks running before the dependencies are complete?  Make sure your dependency tasks are correctly using the async run hints: take in a callback or return a promise or event stream.
+**참고:** 혹시 본 작업이 종속성 작업이 끝나기도 전에 실행됩니까? 아래의 비동기 작업 지원을 확인하고 종속성 작업이 올바르게 작동하는지 확인하세요.
 
 #### fn
 
-The function that performs the task's operations. Generally this takes the form of `gulp.src().pipe(someplugin())`.
+작업에 사용될 함수입니다. 일반적으로 함수는 `gulp.src().pipe(someplugin())` 같은 구조를 가집니다.
 
-#### Async task support
+#### 비동기 작업 지원
 
-Tasks can be made asynchronous if its `fn` does one of the following:
+`fn`의 작업은 비동기로 만들 수 있습니다. 다음 몇 가지 방법이 있습니다:
 
-##### Accept a callback
+##### 콜백 사용
 
 ```javascript
 // run a command in a shell
@@ -148,7 +151,7 @@ gulp.task('jekyll', function(cb) {
 });
 ```
 
-##### Return a stream
+##### Stream 반환
 
 ```js
 gulp.task('somename', function() {
@@ -159,7 +162,7 @@ gulp.task('somename', function() {
 });
 ```
 
-##### Return a promise
+##### Promise 반환
 
 ```javascript
 var Q = require('q');
@@ -176,19 +179,20 @@ gulp.task('somename', function() {
 });
 ```
 
-**Note:** By default, tasks run with maximum concurrency -- e.g. it launches all the tasks at once and waits for nothing. If you want to create a series where tasks run in a particular order, you need to do two things:
+기본적으로 작업들은 동시성을 최대로 실행됩니다. 쉽게 말해 모든 작업이 한 번에 실행되면 작업들은 대기 없이 모조리 한 번에 실행됩니다. 만약 특정한 순서에 따라 작업이 실행되도록 하려면 다음 두 가지를 만족해야 합니다:
 
-- give it a hint to tell it when the task is done,
-- and give it a hint that a task depends on completion of another.
+- 작업이 언제 완료되는지 표시하고
+- 다른 작업에서 해당 작업의 완료에 대해 표시해야 합니다.
 
-For these examples, let's presume you have two tasks, "one" and "two" that you specifically want to run in this order:
+예제로 설명하자면:
 
-1. In task "one" you add a hint to tell it when the task is done.  Either take in a callback and call it when you're
-done or return a promise or stream that the engine should wait to resolve or end respectively.
+먼저 "one"과 "two"라는 작업이 있고, 다음과 같은 순서에 맞춰 진행 합니다:
 
-2. In task "two" you add a hint telling the engine that it depends on completion of the first task.
+1. Stream, 콜백 또는 `Promise`을 사용하여 작업 "one"이 정상적으로 완료되는 부분을 표시합니다.
 
-So this example would look like this:
+2. 작업 "two"에선 실행 이전에 필요한 "one"이라는 작업을 종속성 작업으로 지정합니다.
+
+예시 코드: 
 
 ```js
 var gulp = require('gulp');
@@ -215,7 +219,7 @@ gulp.task('default', ['one', 'two']);
 ### gulp.watch(glob[, opts], tasks)
 
 #### glob
-타입: `String` or `Array`
+타입: `String` 또는 `Array`
 
 변경을 감시할 타겟 파일입니다. 단일 glob 또는 배열을 지정할 수 있습니다.
 
@@ -239,7 +243,7 @@ watcher.on('change', function(event) {
 ### gulp.watch(glob[, opts, cb])
 
 #### glob
-타입: `String` or `Array`
+타입: `String` 또는 `Array`
 
 변경을 감시할 타겟 파일입니다. 단일 glob 또는 배열을 지정할 수 있습니다.
 
