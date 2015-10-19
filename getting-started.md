@@ -1,45 +1,45 @@
-# ½ÃÀÛÇÏ±â
+# ì‹œìž‘í•˜ê¸°
 
-#### 1. npmÀ» ÅëÇØ gulp CLI¸¦ Àü¿ª¿¡ ¼³Ä¡ÇÕ´Ï´Ù:
+#### 1. npmì„ í†µí•´ gulp CLIë¥¼ ì „ì—­ì— ì„¤ì¹˜í•©ë‹ˆë‹¤:
 
 ```sh
 $ npm install --global gulp
 ```
 
-#### 2. gulp¸¦ ÇÁ·ÎÁ§Æ® devDependencies·Î ¼³Ä¡ÇÕ´Ï´Ù:
+#### 2. gulpë¥¼ í”„ë¡œì íŠ¸ devDependenciesë¡œ ì„¤ì¹˜í•©ë‹ˆë‹¤:
 
 ```sh
 $ npm install --save-dev gulp
 ```
 
-#### 3. ÇÁ·ÎÁ§Æ®ÀÇ ·çÆ® µð·ºÅÍ¸®¿¡ `gulpfile.js`¸¦ ¸¸µì´Ï´Ù:
+#### 3. í”„ë¡œì íŠ¸ì˜ ë£¨íŠ¸ ë””ë ‰í„°ë¦¬ì— `gulpfile.js`ë¥¼ ë§Œë“­ë‹ˆë‹¤:
 
 ```js
 var gulp = require('gulp');
 
 gulp.task('default', function() {
-  // ±âº» ÀÛ¾÷ ÄÚµå¸¦ ÀÌ°÷¿¡ ÀÛ¼ºÇÏ¼¼¿ä
+  // ê¸°ë³¸ ìž‘ì—… ì½”ë“œë¥¼ ì´ê³³ì— ìž‘ì„±í•˜ì„¸ìš”
 });
 ```
 
-#### 4. gulp¸¦ ½ÇÇàÇÕ´Ï´Ù:
+#### 4. gulpë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤:
 
 ```sh
 $ gulp
 ```
 
-À§ ÄÚµåÀÇ ±âº» ÀÛ¾÷Àº ½ÇÇàµÇ°í ¾Æ¹« ÀÏµµ ÇÏÁö ¾ÊÀ» °ÍÀÔ´Ï´Ù.
+ìœ„ ì½”ë“œì˜ ê¸°ë³¸ ìž‘ì—…ì€ ì‹¤í–‰ë˜ê³  ì•„ë¬´ ì¼ë„ í•˜ì§€ ì•Šì„ ê²ƒìž…ë‹ˆë‹¤.
 
-°¢°¢ÀÇ ÀÛ¾÷À» µû·Î ½ÇÇàÇÏ·Á¸é `gulp <ÀÛ¾÷> <¶Ç ´Ù¸¥ ÀÛ¾÷>`À» ½ÇÇàÇÏ¼¼¿ä.
+ê°ê°ì˜ ìž‘ì—…ì„ ë”°ë¡œ ì‹¤í–‰í•˜ë ¤ë©´ `gulp <ìž‘ì—…> <ë˜ ë‹¤ë¥¸ ìž‘ì—…>`ì„ ì‹¤í–‰í•˜ì„¸ìš”.
 
-## ÀÌÁ¦ ¹«¾ùÀ» ÇØ¾ß ÇÏ³ª¿ä?
+## ì´ì œ ë¬´ì—‡ì„ í•´ì•¼ í•˜ë‚˜ìš”?
 
-ÀÌ·¸°Ô ÇØ¼­ ºó gulpfileÀ» ¸¸µé¾ú°í ÇÊ¿äÇÑ °ÍÀº ¸ðµÎ ¼³Ä¡Çß½À´Ï´Ù. ÀÌÁ¦ Á» ´õ ÀÚ¼¼ÇÑ ³»¿ëÀ» ¾Ë¾Æº¸±â À§ÇØ [Á¶ÇÕ¹ý](recipes)°ú [°ü·Ã ±â»çµé](README.md#°ü·Ã-±â»çµé)À» Ã£¾Æº¸¼¼¿ä!
+ì´ë ‡ê²Œ í•´ì„œ ë¹ˆ gulpfileì„ ë§Œë“¤ì—ˆê³  í•„ìš”í•œ ê²ƒì€ ëª¨ë‘ ì„¤ì¹˜í–ˆìŠµë‹ˆë‹¤. ì´ì œ ì¢€ ë” ìžì„¸í•œ í™œìš©ë²•ì€ [ì¡°í•©ë²•](recipes)ê³¼ [ê´€ë ¨ ê¸°ì‚¬ë“¤](README.md#ê´€ë ¨-ê¸°ì‚¬ë“¤)ì„ ì°¸ê³ í•˜ì„¸ìš”!
 
-## .src, .watch, .dest, CLI args - ÀÌ°ÍµéÀº ¾î¶»°Ô »ç¿ëÇÏ³ª¿ä?
+## .src, .watch, .dest, CLI args - ì´ê²ƒë“¤ì€ ì–´ë–»ê²Œ ì‚¬ìš©í•˜ë‚˜ìš”?
 
-gulp API¿¡ ´ëÇÑ ³»¿ëÀº ¸ðµÎ [API ÂüÁ¶ ¹®¼­](API.md)¿¡¼­ Ã£À» ¼ö ÀÖ½À´Ï´Ù.
+gulp APIì— ëŒ€í•œ ë‚´ìš©ì€ ëª¨ë‘ [API ì°¸ì¡° ë¬¸ì„œ](API.md)ì—ì„œ ì°¾ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-## »ç¿ëÇÒ ¼ö ÀÖ´Â ÇÃ·¯±×ÀÎµé
+## ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” í”ŒëŸ¬ê·¸ì¸ë“¤
 
-gulp Ä¿¹Â´ÏÆ¼´Â °è¼Ó ÀÚ¶ó³ª°í ÀÖ°í ¸ÅÀÏ »õ·Î¿î ÇÃ·¯±×ÀÎÀÌ ¸¸µé¾îÁö°í ÀÖ½À´Ï´Ù. [gulp ÇÃ·¯±×ÀÎ ¸ñ·Ï](http://gulpjs.com/plugins/)À» ÅëÇØ ÇÊ¿äÇÑ ÇÃ·¯±×ÀÎÀ» Å½»öÇÏ¼¼¿ä.
+gulp ì»¤ë®¤ë‹ˆí‹°ëŠ” ê³„ì† ìžë¼ë‚˜ê³  ìžˆê³  ë§¤ì¼ ìƒˆë¡œìš´ í”ŒëŸ¬ê·¸ì¸ì´ ë§Œë“¤ì–´ì§€ê³  ìžˆìŠµë‹ˆë‹¤. [gulp í”ŒëŸ¬ê·¸ì¸ ëª©ë¡](http://gulpjs.com/plugins/)ì„ í†µí•´ í•„ìš”í•œ í”ŒëŸ¬ê·¸ì¸ì„ íƒìƒ‰í•˜ì„¸ìš”.
